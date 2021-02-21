@@ -5,6 +5,7 @@ import { Router, Route, Switch } from "react-router-dom";
 
 import "assets/scss/material-kit-react.scss?v=1.9.0";
 
+import Components from "views/Components/Components.js";
 import LandingPage from "views/LandingPage/LandingPage.js";
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
@@ -15,7 +16,8 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route path="/landing" component={LandingPage} />
-      <Route path="/profiles" component={ProfilePage} />
+      <Route path="/profile" component={ProfilePage} />
+      <Route path="/component" component={Components} />
       <Route path="/" component={LoginPage} />
     </Switch>
   </Router>,
