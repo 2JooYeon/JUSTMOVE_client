@@ -2,23 +2,22 @@ import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
+// import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
-import Camera from "@material-ui/icons/Camera";
-import Palette from "@material-ui/icons/Palette";
-import Favorite from "@material-ui/icons/Favorite";
+import EmojiEvents from "@material-ui/icons/EmojiEvents";
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import Button from "components/CustomButtons/Button.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import Tabs from "components/CustomTabs/CustomTabs.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 
 import profile from "assets/img/faces/christian.jpg";
-
 import studio1 from "assets/img/examples/studio-1.jpg";
 import studio2 from "assets/img/examples/studio-2.jpg";
 import studio3 from "assets/img/examples/studio-3.jpg";
@@ -31,6 +30,7 @@ import work4 from "assets/img/examples/mariya-georgieva.jpg";
 import work5 from "assets/img/examples/clem-onojegaw.jpg";
 
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
+import { Icon } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -47,8 +47,9 @@ export default function ProfilePage(props) {
     <div>
       <Header
         color="transparent"
-        brand="Material Kit React"
-        rightLinks={<HeaderLinks />}
+        brand="JUSTMOVE"
+        rightLinks=""
+        user="클러그 님"
         fixed
         changeColorOnScroll={{
           height: 200,
@@ -60,7 +61,7 @@ export default function ProfilePage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div>
           <div className={classes.container}>
-            <GridContainer justify="center">
+            <GridContainer justify="center" align= "center">
               <GridItem xs={12} sm={12} md={6}>
                 <div className={classes.profile}>
                   <div>
@@ -68,28 +69,29 @@ export default function ProfilePage(props) {
                   </div>
                   <div className={classes.name}>
                     <h3 className={classes.title}>Christian Louboutin</h3>
-                    <h6>DESIGNER</h6>
-                    <Button justIcon link className={classes.margin5}>
-                      <i className={"fab fa-twitter"} />
-                    </Button>
-                    <Button justIcon link className={classes.margin5}>
-                      <i className={"fab fa-instagram"} />
-                    </Button>
-                    <Button justIcon link className={classes.margin5}>
-                      <i className={"fab fa-facebook"} />
-                    </Button>
                   </div>
                 </div>
-              </GridItem>
-            </GridContainer>
             <div className={classes.description}>
               <p>
-                An artist of considerable range, Chet Faker — the name taken by
-                Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-                and records all of his own music, giving it a warm, intimate
-                feel with a solid groove structure.{" "}
+                가만히 못 앉아있는 사람{" "}
               </p>
             </div>
+            </GridItem>
+            <GridItem xs={12} sm={12} md={6}>
+            
+              <div vertical-align="middle">
+            <div className={classes.wrapper}>
+              <div>
+              <EmojiEvents size="large"/>
+                <h6>BADGE</h6>
+             </div>
+              <Button>30</Button>
+              <Button>30</Button>
+            </div>
+            </div>
+            </GridItem>
+            
+            </GridContainer>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
                 <NavPills
@@ -97,8 +99,7 @@ export default function ProfilePage(props) {
                   color="primary"
                   tabs={[
                     {
-                      tabButton: "Studio",
-                      tabIcon: Camera,
+                      tabButton: "내가 업로드한 영상",
                       tabContent: (
                         <GridContainer justify="center">
                           <GridItem xs={12} sm={12} md={4}>
@@ -129,7 +130,7 @@ export default function ProfilePage(props) {
                       )
                     },
                     {
-                      tabButton: "Work",
+                      tabButton: "내가 도전한 영상",
                       tabIcon: Palette,
                       tabContent: (
                         <GridContainer justify="center">
@@ -164,52 +165,13 @@ export default function ProfilePage(props) {
                           </GridItem>
                         </GridContainer>
                       )
-                    },
-                    {
-                      tabButton: "Favorite",
-                      tabIcon: Favorite,
-                      tabContent: (
-                        <GridContainer justify="center">
-                          <GridItem xs={12} sm={12} md={4}>
-                            <img
-                              alt="..."
-                              src={work4}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={studio3}
-                              className={navImageClasses}
-                            />
-                          </GridItem>
-                          <GridItem xs={12} sm={12} md={4}>
-                            <img
-                              alt="..."
-                              src={work2}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={work1}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={studio1}
-                              className={navImageClasses}
-                            />
-                          </GridItem>
-                        </GridContainer>
-                      )
                     }
-                  ]}
-                />
               </GridItem>
             </GridContainer>
-          </div>
         </div>
       </div>
       <Footer />
     </div>
+  </div>
   );
 }

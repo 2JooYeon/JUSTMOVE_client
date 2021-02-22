@@ -49,7 +49,7 @@ export default function Header(props) {
         .classList.remove(classes[changeColorOnScroll.color]);
     }
   };
-  const { color, leftLinks, brand, fixed, absolute } = props;
+  const { color, rightLinks, leftLinks, brand, fixed, absolute, user } = props;
   const appBarClasses = classNames({
     [classes.appBar]: true,
     [classes[color]]: color,
@@ -57,6 +57,7 @@ export default function Header(props) {
     [classes.fixed]: fixed
   });
   const brandComponent = <Button className={classes.title}>{brand}</Button>;
+  const userComponent = <Button className={classes.title}>{user}</Button>;
   return (
     <AppBar className={appBarClasses}>
       <Toolbar className={classes.container}>
@@ -69,6 +70,15 @@ export default function Header(props) {
           ) : (
             brandComponent
           )}
+        </div>
+        <div>
+        {leftLinks !== undefined ? (
+          <Hidden smDown implementation="css">
+            {rightLinks}
+          </Hidden>
+          ) : (
+            userComponent
+            )}
         </div>
       </Toolbar>
     </AppBar>
@@ -94,6 +104,7 @@ Header.propTypes = {
   rightLinks: PropTypes.node,
   leftLinks: PropTypes.node,
   brand: PropTypes.string,
+  user: PropTypes.string,
   fixed: PropTypes.bool,
   absolute: PropTypes.bool,
   // this will cause the sidebar to change the color from
