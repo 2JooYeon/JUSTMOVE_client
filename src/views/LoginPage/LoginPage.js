@@ -63,30 +63,30 @@ export default function LoginPage(props) {
                   </CardHeader>
                   <p className={classes.divider}>기존 계정으로 간단하게 회원가입하세요.</p>
                   <CardBody>
-                    <Link to="" className={classes.link}>
+                    <a href="http://ec2-54-180-165-194.ap-northeast-2.compute.amazonaws.com/auth/login/naver" className={classes.link} style={{display: "block", margin: "10px 0"}}>
                       <img
                         src={naver}
                         alt="naver"
                         width="100%"
                         height="auto"
                       />
-                    </Link>
-                    <Link to="" className={classes.link}>
+                    </a>
+                    {/*<a href="" className={classes.link} style={{display: "block", margin: "10px 0"}}>*/}
+                    {/*  <img*/}
+                    {/*    src={kakao}*/}
+                    {/*    alt="kakao"*/}
+                    {/*    width="100%"*/}
+                    {/*    height="auto"*/}
+                    {/*  />*/}
+                    {/*</a>*/}
+                    <a href="http://ec2-54-180-165-194.ap-northeast-2.compute.amazonaws.com/auth/login/google" className={classes.link} style={{display: "block", margin: "10px 0"}}>
                       <img
-                        src={kakao} 
-                        alt="kakao"
-                        width="100%"
-                        height="auto"
-                      />
-                    </Link>
-                    <Link to="" className={classes.link}>
-                      <img
-                        src={google} 
+                        src={google}
                         alt="google"
                         width="100%"
                         height="auto"
                       />
-                    </Link>
+                    </a>
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
                     <Button simple color="info" size="lg">
