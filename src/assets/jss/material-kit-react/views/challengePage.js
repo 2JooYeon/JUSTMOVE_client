@@ -1,4 +1,4 @@
-import { container, title } from "assets/jss/material-kit-react.js";
+import {boxShadow, container, title} from "assets/jss/material-kit-react.js";
 import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
 
 const challengePageStyle = {
@@ -58,7 +58,7 @@ const challengePageStyle = {
         padding: "8px",
         marginBottom: "5px",
         borderRadius: "3px",
-        boxShadow: "0 6px 4px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 1px -5px rgba(0, 0, 0, 0.2)",
+        boxShadow: "10px 5px 40px -12.5px rgba(0,0,0,0.20)",
         "& img": {
             marginRight:"20px",
             borderRadius: "50% !important"
@@ -67,10 +67,10 @@ const challengePageStyle = {
         display: "inline",
         },
         "& h3": {
-            margin: "0 31px 0 10px"    
+            margin: "0 31px 0 10px"
         },
         "& h4": {
-            marginLeft: "60px"    
+            marginLeft: "60px"
         }
     },
 };
