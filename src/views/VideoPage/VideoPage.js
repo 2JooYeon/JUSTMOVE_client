@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback, useState} from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -27,6 +27,8 @@ import video from "assets/video/Alone.mp4"
 
 import videoSrc from "assets/video/example.mp4";
 
+import {animated, useTransition} from 'react-spring';
+
 const useStyles = makeStyles(styles);
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -44,6 +46,53 @@ export default function ProfilePage(props) {
         classes.imgFluid
     );
     const [classicModal, setClassicModal] = React.useState(false);
+
+    const [visible, setVisible] = useState(false);
+    const [emojiIndex, setEmojiIndex] = useState(0);
+
+    const slideUpTransition = useTransition(visible, null, {
+        from: {
+            transform: `translateY(75px) scale(0.6)`,
+            opacity: 0
+        },
+        enter: {
+            transform: `translateY(0px) scale(1)`,
+            opacity: 1
+        },
+        leave: {
+            transform: `translateY(75px) scale(0.6)`,
+            opacity: 0
+        },
+        config: {
+            tension: 150,
+            friction: 10
+        }
+    });
+
+    const emojiArray = [
+        {
+            name: "Good",
+            value: "😀"
+        },
+        {
+            name: "Something",
+            value: "🙂"
+        },
+        {
+            name: "asdf",
+            value: "🙁"
+        },
+    ]
+
+    // 이거 위에 적절하게 넣어서 맞는 번호 호출하면 뜹니당
+    const showEmoji = useCallback((index) => {
+        setVisible(true);
+        setEmojiIndex(index);
+        setTimeout(() => {
+            setVisible(false)
+        }, 1000)
+    }, []);
+
     return (
         <div
             className={classes.pageHeader}
@@ -56,7 +105,7 @@ export default function ProfilePage(props) {
         >
 
             <div style={{position: "relative", width: "100%", height: "100vh"}}>
-                <div style={{display: "flex", position: "absolute", top: "0px", right: "10px"}}>
+                <div style={{display: "flex", position: "absolute", top: "0px", right: "10px", zIndex: 500}}>
                     <PausePresentationIcon style={{fontSize: 80}}/>
                     <button
                         style={{border: "none", outline: "none", background: "transparent", marginLeft: "5px"}}
@@ -64,6 +113,9 @@ export default function ProfilePage(props) {
                     >
                         <ExitToAppIcon style={{fontSize: 80}}/>
                     </button>
+                    <button onClick={() => showEmoji(0)} style={{zIndex:100}}>1</button>
+                    <button onClick={() => showEmoji(1)} style={{zIndex:100}}>2</button>
+                    <button onClick={() => showEmoji(2)} style={{zIndex:100}}>3</button>
                 </div>
                 <div style={{display: "flex", height: "100%"}}>
                     <div style={{
@@ -90,7 +142,7 @@ export default function ProfilePage(props) {
                         </div>
                         <video width="640" height="480" controls src={video}/>
                     </div>
-                    <div style={{flex: "1", position: "relative", display: "flex", alignItems: "center"}}>
+                    <div style={{flex: "1", position: "relative", display: "flex", justifyContent: "center", alignItems: "center"}}>
                         <div style={{
                             position: "absolute",
                             right: "15px",
@@ -109,6 +161,23 @@ export default function ProfilePage(props) {
                         <video width="640" height="480" controls src={videoSrc}/>
                     </div>
                 </div>
+
+                {slideUpTransition.map(({ item, key, props }) =>
+                    item ? (
+                        <animated.div
+                            style={{...props, position:"fixed", top: "0", left:"0", width: "100%", height: "100%", zIndex: 15, display: "flex", alignItems: "center", justifyContent: "center"}}
+                            key={key}
+                        >
+                            <div style={{display:"flex", flexDirection:"column", justifyContent: "center"}}>
+                                <div style={{zIndex: 1200, fontSize: "3rem",marginBottom: "20px", textAlign: "center"}}>{emojiArray[emojiIndex].name}</div>
+                                <div style={{zIndex: 1200, fontSize: "3rem",paddingBottom: "10px", textAlign: "center"}}>
+                                    {emojiArray[emojiIndex].value}
+                                </div>
+                            </div>
+                        </animated.div>
+                    ) : null
+                )}
+
                 <Dialog
                     classes={{
                         root: classes.center,
@@ -150,7 +219,6 @@ export default function ProfilePage(props) {
                             color="transparent"
                             simple
                             onClick={() => setClassicModal(false)}
-                            simple
                         >
                             이어하기
                         </Button>
