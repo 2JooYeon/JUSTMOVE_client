@@ -26,13 +26,13 @@ const profilePageStyle = {
     }
   },
   vedio: {
-    width: "40%",
-    height: "80%",
+    zIndex: "3",
+    height: "1000px",
     margin: "10px 10px",
     borderRadius: "6px 0 0 6px",
-    background: "#FFFFFF"
   },
-  profile: {
+  profile: {  
+    zIndex: "2",
     textAlign: "center",
     "& img": {
       maxWidth: "160px",
