@@ -17,7 +17,7 @@ import Muted from "components/Typography/Muted.js";
 import styles from "assets/jss/material-kit-react/views/challengePage.js";
 
 import profile from "assets/img/faces/christian.jpg";
-import image from "assets/img/challenge_bg.png";
+import image from "assets/img/stage1.jpg";
 import thumnail from "assets/img/bg7.jpg";
 import rank from "assets/img/rank.png";
 import rank1 from "assets/img/rank1.png";

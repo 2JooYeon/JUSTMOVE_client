@@ -10,7 +10,6 @@ import Palette from "@material-ui/icons/Palette";
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
-import Button from "components/CustomButtons/Button.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import NavPills from "components/NavPills/NavPills.js";
@@ -140,7 +139,6 @@ export default function ProfilePage(props) {
                                         },
                                         {
                                             tabButton: "내가 도전한 영상",
-                                            tabIcon: Palette,
                                             tabContent: (
                                                 <GridContainer justify="center">
                                                     <GridItem xs={12} sm={12} md={4}>
