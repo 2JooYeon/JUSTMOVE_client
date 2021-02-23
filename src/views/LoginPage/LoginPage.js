@@ -23,7 +23,6 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 import image from "assets/img/bg7.jpg";
 import naver from "assets/img/naver_login.png";
-import kakao from "assets/img/kakao_login.png";
 import google from "assets/img/google_login.png";
 
 import { BuildOutlined } from "@material-ui/icons";
